@@ -23,6 +23,10 @@ angular.module('angularFamousPlayground', ['famous.angular', 'ngRoute'])
         templateUrl: 'partials/deck.html',
         controller: 'DeckCtrl'
       })
+      .when('/draggable', {
+        templateUrl: 'partials/draggable.html',
+        controller: 'DraggableCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
