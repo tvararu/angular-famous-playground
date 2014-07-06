@@ -5,6 +5,14 @@ var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var saveLicense = require('uglify-save-license');
 
+gulp.task('jade', function () {
+  return gulp.src('./app/**/*.jade')
+    .pipe($.jade({
+      pretty: true
+    }))
+    .pipe(gulp.dest('./.tmp/'));
+});
+
 gulp.task('styles', function () {
   return gulp.src('app/styles/main.sass')
     .pipe($.plumber())

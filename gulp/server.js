@@ -30,21 +30,22 @@ function browserSyncInit(baseDir, files, browser) {
       baseDir: baseDir,
       middleware: proxyMiddleware
     },
-    browser: browser
+    browser: browser,
+    notify: false
   });
 
 }
 
 gulp.task('serve', ['watch'], function () {
   browserSyncInit([
-    'app',
-    '.tmp'
+    './app',
+    './.tmp'
   ], [
-    'app/*.html',
-    '.tmp/styles/**/*.css',
-    'app/scripts/**/*.js',
-    'app/partials/**/*.html',
-    'app/images/**/*'
+    './.tmp/*.html',
+    './.tmp/styles/**/*.css',
+    './.tmp/partials/**/*.html',
+    './app/scripts/**/*.js',
+    './app/images/**/*'
   ]);
 });
 
