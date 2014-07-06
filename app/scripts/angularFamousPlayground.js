@@ -7,6 +7,14 @@ angular.module('angularFamousPlayground', ['famous.angular', 'ngRoute'])
         templateUrl: 'partials/main.html',
         controller: 'MainCtrl'
       })
+      .when('/simple', {
+        templateUrl: 'partials/simple.html',
+        controller: 'SimpleCtrl'
+      })
+      .when('/snap-spring', {
+        templateUrl: 'partials/snap-spring.html',
+        controller: 'SnapSpringCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
