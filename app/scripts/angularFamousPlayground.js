@@ -15,6 +15,10 @@ angular.module('angularFamousPlayground', ['famous.angular', 'ngRoute'])
         templateUrl: 'partials/snap-spring.html',
         controller: 'SnapSpringCtrl'
       })
+      .when('/color', {
+        templateUrl: 'partials/color.html',
+        controller: 'ColorCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
