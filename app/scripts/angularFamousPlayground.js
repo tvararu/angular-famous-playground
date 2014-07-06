@@ -19,6 +19,10 @@ angular.module('angularFamousPlayground', ['famous.angular', 'ngRoute'])
         templateUrl: 'partials/color.html',
         controller: 'ColorCtrl'
       })
+      .when('/deck', {
+        templateUrl: 'partials/deck.html',
+        controller: 'DeckCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
