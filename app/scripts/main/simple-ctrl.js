@@ -1,6 +1,6 @@
 'use strict';
 
 angular.module('angularFamousPlayground')
-  .controller('MainCtrl', function ($scope, $famous) {
+  .controller('SimpleCtrl', function ($scope, $famous) {
     
   });
