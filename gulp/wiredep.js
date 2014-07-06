@@ -2,19 +2,17 @@
 
 var gulp = require('gulp');
 
-var $ = require('gulp-load-plugins')();
-
 // inject bower components
 gulp.task('wiredep', function () {
   var wiredep = require('wiredep').stream;
 
-  gulp.src('app/styles/*.scss')
+  gulp.src('app/styles/*.sass')
     .pipe(wiredep({
-        directory: 'app/bower_components'
+      directory: 'app/bower_components'
     }))
     .pipe(gulp.dest('app/styles'));
 
-  gulp.src('app/*.html')
+  gulp.src('app/*.jade')
     .pipe(wiredep({
       directory: 'app/bower_components',
       exclude: ['bootstrap-sass-official']
