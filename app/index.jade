@@ -40,8 +40,14 @@ html.no-js(ng-app='angularFamousPlayground')
     script(src='bower_components/jquery/dist/jquery.js')
     script(src='bower_components/angular/angular.js')
     script(src='bower_components/angular-route/angular-route.js')
+    script(src='bower_components/requirejs/require.js')
+    script(src='bower_components/famous-angular/dist/famous-angular.js')
     // endbower
     // endbuild
+    
+    script.
+      // Tell requirejs where to find the famous lib.
+      require.config({ baseUrl: 'bower_components/' });
     
     // build:js({app,.tmp}) scripts/main.js
     script(src='scripts/angularFamousPlayground.js')

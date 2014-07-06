@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('angularFamousPlayground', ['ngRoute'])
+angular.module('angularFamousPlayground', ['famous.angular', 'ngRoute'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
