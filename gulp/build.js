@@ -31,8 +31,8 @@ gulp.task('scripts', function () {
     .pipe($.size());
 });
 
-gulp.task('partials', function () {
-  return gulp.src('app/partials/**/*.html')
+gulp.task('partials', ['jade'], function () {
+  return gulp.src('./.tmp/partials/**/*.html')
     .pipe($.minifyHtml({
       empty: true,
       spare: true,
@@ -42,7 +42,7 @@ gulp.task('partials', function () {
       moduleName: 'angularFamousPlayground',
       prefix: 'partials/'
     }))
-    .pipe(gulp.dest('.tmp/partials'))
+    .pipe(gulp.dest('./.tmp/partials'))
     .pipe($.size());
 });
 
@@ -50,29 +50,51 @@ gulp.task('html', ['styles', 'scripts', 'partials'], function () {
   var jsFilter = $.filter('**/*.js');
   var cssFilter = $.filter('**/*.css');
 
-  return gulp.src('app/*.html')
-    .pipe($.inject(gulp.src('.tmp/partials/**/*.js'), {
+  return gulp.src('./.tmp/*.html')
+    // Inject angular template partials.
+    .pipe($.inject(gulp.src('./.tmp/partials/**/*.js'), {
       read: false,
-      starttag: '<!-- inject:partials -->',
+      starttag: '<!-- inject:partials-->',
+      endtag: '<!-- endinject-->',
       addRootSlash: false,
       addPrefix: '../'
     }))
+
+    // Grab all the js/css references declared between build:css/build:js comments
+    // in index.html, concat them, and reroute the stream to only refer to them from
+    // this point.
     .pipe($.useref.assets())
+    // Add revision suffix to files, i.e.: main.css -> main-1v9123.css
     .pipe($.rev())
+
+    // Filter useref stream to just JS files.
     .pipe(jsFilter)
+    // Run the Angular pre-minifier to prepare function calls for uglify,
+    // i.e.: function ($scope) {} -> ['$scope', function ($scope) {}].
     .pipe($.ngmin())
+    // Minify JS, preserving OSS licenses at the top.
     .pipe($.uglify({
       preserveComments: saveLicense
     }))
+    // Restore stream to previous state.
     .pipe(jsFilter.restore())
+
+    // Filter useref stream to just CSS files.
     .pipe(cssFilter)
     .pipe($.replace('bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap', 'fonts'))
+    // Minify CSS.
     .pipe($.csso())
+    // Restore stream to previous state.
     .pipe(cssFilter.restore())
+
+    // Restore stream to pre-useref.
     .pipe($.useref.restore())
     .pipe($.useref())
+    // Replace all previous references to revisioned files to the new one.
     .pipe($.revReplace())
-    .pipe(gulp.dest('dist'))
+
+    // Spit out everything in ./dist/ folder.
+    .pipe(gulp.dest('./dist/'))
     .pipe($.size());
 });
 
@@ -101,4 +123,4 @@ gulp.task('clean', function () {
   }).pipe($.clean());
 });
 
-gulp.task('build', ['html', 'partials', 'images', 'fonts']);
+gulp.task('build', ['html', 'images', 'fonts']);

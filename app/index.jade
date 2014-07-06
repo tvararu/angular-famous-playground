@@ -2,21 +2,21 @@ doctype html
 html.no-js(ng-app='angularFamousPlayground')
   head
     meta(charset='utf-8')
-    title Wallet
+    title Playground
     meta(name='description', content='')
     meta(name='viewport', content='width=device-width')
     // Place favicon.ico and apple-touch-icon.png in the root directory
     
-    // build:css styles/vendor.css
+    // build:css(app) styles/vendor.css
     // bower:css
     // endbower
     // endbuild
     
-    // build:css({.tmp,app}) styles/main.css
+    // build:css(.tmp) styles/main.css
     link(rel='stylesheet', href='styles/main.css')
     // endbuild
     
-    // build:js scripts/modernizr.js
+    // build:js(app) scripts/modernizr.js
     script(src='bower_components/modernizr/modernizr.js')
     // endbuild
   body
@@ -35,7 +35,7 @@ html.no-js(ng-app='angularFamousPlayground')
       r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
       ga('create','UA-XXXXX-X');ga('send','pageview');
     
-    // build:js scripts/vendor.js
+    // build:js(app) scripts/vendor.js
     // bower:js
     script(src='bower_components/jquery/dist/jquery.js')
     script(src='bower_components/angular/angular.js')
