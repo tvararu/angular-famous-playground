@@ -6,9 +6,11 @@ var $ = require('gulp-load-plugins')();
 var saveLicense = require('uglify-save-license');
 
 gulp.task('styles', function () {
-  return gulp.src('app/styles/main.scss')
+  return gulp.src('app/styles/main.sass')
     .pipe($.plumber())
-    .pipe($.rubySass({style: 'expanded'}))
+    .pipe($.rubySass({
+      style: 'expanded'
+    }))
     .pipe($.autoprefixer('last 1 version'))
     .pipe(gulp.dest('.tmp/styles'))
     .pipe($.size());
@@ -29,10 +31,10 @@ gulp.task('partials', function () {
       quotes: true
     }))
     .pipe($.ngHtml2js({
-      moduleName: "angularFamousPlayground",
-      prefix: "partials/"
+      moduleName: 'angularFamousPlayground',
+      prefix: 'partials/'
     }))
-    .pipe(gulp.dest(".tmp/partials"))
+    .pipe(gulp.dest('.tmp/partials'))
     .pipe($.size());
 });
 
@@ -51,10 +53,12 @@ gulp.task('html', ['styles', 'scripts', 'partials'], function () {
     .pipe($.rev())
     .pipe(jsFilter)
     .pipe($.ngmin())
-    .pipe($.uglify({preserveComments: saveLicense}))
+    .pipe($.uglify({
+      preserveComments: saveLicense
+    }))
     .pipe(jsFilter.restore())
     .pipe(cssFilter)
-    .pipe($.replace('bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap','fonts'))
+    .pipe($.replace('bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap', 'fonts'))
     .pipe($.csso())
     .pipe(cssFilter.restore())
     .pipe($.useref.restore())
@@ -84,7 +88,9 @@ gulp.task('fonts', function () {
 });
 
 gulp.task('clean', function () {
-  return gulp.src(['.tmp', 'dist'], { read: false }).pipe($.clean());
+  return gulp.src(['.tmp', 'dist'], {
+    read: false
+  }).pipe($.clean());
 });
 
 gulp.task('build', ['html', 'partials', 'images', 'fonts']);
