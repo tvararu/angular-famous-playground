@@ -1,5 +1,10 @@
 fa-app.full-screen
   fa-modifier(fa-origin='[0.5, 0.5]')
-    fa-surface.secondary-bg(fa-size='[200, 200]')
-      fa-modifier(fa-origin='[0.5, 0.5]')
-        fa-surface(fa-size='[true, true]') {{ message }}
+    fa-modifier(fa-translate='snap.transition.get()')
+      fa-surface(fa-size='[s, s]', fa-click='toggle()').secondary-bg
+        fa-modifier(fa-origin='[0.5, 0.5]')
+          fa-surface(fa-size='[true, true]') Snap.
+    fa-modifier(fa-translate='spring.transition.get()')
+      fa-surface(fa-size='[s, s]', fa-click='toggle()').secondary-bg
+        fa-modifier(fa-origin='[0.5, 0.5]')
+          fa-surface(fa-size='[true, true]') Spring.
