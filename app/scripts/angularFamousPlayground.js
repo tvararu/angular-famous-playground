@@ -10,5 +10,4 @@ angular.module('angularFamousPlayground', ['ngRoute'])
       .otherwise({
         redirectTo: '/'
       });
-  })
-;
+  });

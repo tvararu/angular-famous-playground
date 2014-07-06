@@ -13,6 +13,16 @@ gulp.task('jade', function () {
     .pipe(gulp.dest('./.tmp/'));
 });
 
+gulp.task('watch:jade', function () {
+  return gulp.src('./app/**/*.jade')
+    .pipe($.watch())
+    .pipe($.plumber())
+    .pipe($.jade({
+      pretty: true
+    }))
+    .pipe(gulp.dest('./.tmp/'));
+});
+
 gulp.task('styles', function () {
   return gulp.src('app/styles/main.sass')
     .pipe($.plumber())

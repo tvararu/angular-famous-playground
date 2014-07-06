@@ -40,7 +40,8 @@
     "gulp-plumber": "^0.6.3",
     "protractor": "~0.24.2",
     "uglify-save-license": "^0.4.1",
-    "gulp-jade": "^0.6.1"
+    "gulp-jade": "^0.6.1",
+    "gulp-watch": "^0.6.8"
   },
   "engines": {
     "node": ">=0.10.0"
