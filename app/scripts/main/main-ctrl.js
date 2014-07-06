@@ -9,7 +9,12 @@ angular.module('angularFamousPlayground')
     Transitionable.registerMethod('snap', SnapTransition);
     Transitionable.registerMethod('spring', SpringTransition);
 
-    window.$famous = $famous;
+    var EventHandler = $famous['famous/core/EventHandler'];
+    $scope.evt = new EventHandler();
+
+    $scope.evt.on('click', function () {
+      $scope.toggle();
+    });
 
     $scope.s = 200;
     // If screen is too tiny.
