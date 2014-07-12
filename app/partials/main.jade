@@ -1,6 +1,27 @@
 fa-app.full-screen
-  fa-modifier(fa-origin='[0.5, 0.5]')
-    fa-surface(fa-size='[200, 200]').bg-secondary
-      a(href='#/simple') Simple
-      br
-      a(href='#/snap-spring') Snap vs Spring
+  fa-scroll-view(fa-pipe-from='evt')
+    fa-surface.no-pointer(fa-size='[undefined, 384]', fa-pipe-to='evt')
+      .container
+        h3 Angular + Famous Playground
+        p Kitchen sink for my random Angular + Famous ideas and proofs of concept. Navigate to an example, click around on stuff, then use the back button to get back here.
+        p
+          | Source code is on 
+          a(href='https://github.com/tvararu/angular-famous-playground/', target='_blank') Github
+          | .
+        ul
+          li
+            h3: a(href='#/simple') Simple square
+            p The simplest Famous example: a centered square.
+          li
+            h3: a(href='#/snap-spring') Snap vs. Spring transition
+            p A visual comparison of the Snap and Spring transitions.
+          li
+            h3: a(href='#/color') Color transition
+            p An example color transition. The reason this is interesting is because it's accomplished not by animating the CSS property, but by overlaying two Surfaces and opacitating them.
+          li
+            h3: a(href='#/deck') Deck
+            p This is a nearly unmodified copy of the Famous "Deck" example.
+          li
+            h3: a(href='#/draggable') Drag and return
+            p Drag a surface, and have it return to its initial position with a transition.
+

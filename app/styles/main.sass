@@ -21,6 +21,37 @@ body
   user-select: none
   line-height: 1.5em
   @extend .text-secondary
+  
+  .container
+    width: 100%
+    height: 100%
+    padding: 1.5em 0.75em
+    
+    max-width: 800px
+    margin: 0 auto
+    
+    &, *
+      box-sizing: border-box
+  
+  h3
+    font-size: 1em
+    margin: 0
+    font-weight: 400
+  
+  li h3 + p
+    margin-top: 0
+  
+  p
+    margin: 1.5em 0
+  
+  ul
+    padding: 0
+    margin: 0
+    list-style-type: none
+    
+  a
+    color: $flat-belize-hole
+    text-decoration: none
 
 .browsehappy
   margin: 0.2em 0
@@ -37,3 +68,6 @@ body
 
 .famous-surface
   cursor: pointer
+  
+  &.no-pointer
+    cursor: inherit
