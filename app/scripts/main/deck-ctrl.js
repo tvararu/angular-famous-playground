@@ -9,7 +9,7 @@ angular.module('angularFamousPlayground')
     var Deck = $famous['famous/views/Deck'];
 
     var surfaces = [];
-    $scope.myLayout = new Deck({
+    $scope.deckLayout = new Deck({
       itemSpacing: 10,
       transition: {
         method: 'spring',
@@ -19,7 +19,7 @@ angular.module('angularFamousPlayground')
       stackRotation: 0.1
     });
 
-    $scope.myLayout.sequenceFrom(surfaces);
+    $scope.deckLayout.sequenceFrom(surfaces);
 
     for (var i = 0; i < 5; i++) {
       var temp = new Surface({
@@ -34,7 +34,7 @@ angular.module('angularFamousPlayground')
       });
 
       temp.on('click', function () {
-        $scope.myLayout.toggle();
+        $scope.deckLayout.toggle();
       });
 
       surfaces.push(temp);
